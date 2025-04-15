@@ -235,9 +235,11 @@ class OllamaChatApp:
                     models = [model["name"] for model in data["models"]]
                     self.root.after(0, lambda: self.update_models(models))
                 else:
-                    self.root.after(0, lambda: self.set_status(f"Error: {response.status_code}", "red"))
+                    error_code = response.status_code
+                    self.root.after(0, lambda: self.set_status(f"Error: {error_code}", "red"))
             except Exception as e:
-                self.root.after(0, lambda: self.set_status(f"Error: {str(e)}", "red"))
+                error_msg = str(e)
+                self.root.after(0, lambda: self.set_status(f"Error: {error_msg}", "red"))
         
         threading.Thread(target=_load).start()
     
