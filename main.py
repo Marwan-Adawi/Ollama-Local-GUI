@@ -301,8 +301,8 @@ class OllamaChatApp:
         if self.chat_display.get("1.0", "end").strip():
             self.chat_display.insert("end", "\n\n")
         
-        # Use bold font for user label
-        self.chat_display.insert("end", "You: ", font=ctk.CTkFont(size=12, weight="bold"))
+        # CTkTextbox doesn't support font in insert, using simple text
+        self.chat_display.insert("end", "You: ")
         
         # Add the message
         self.chat_display.insert("end", message)
@@ -315,8 +315,8 @@ class OllamaChatApp:
         self.chat_display.configure(state="normal")
         self.chat_display.insert("end", "\n\n")
         
-        # Add AI icon/label with bold font
-        self.chat_display.insert("end", "AI: ", font=ctk.CTkFont(size=12, weight="bold"))
+        # Add AI icon/label (without formatting)
+        self.chat_display.insert("end", "AI: ")
         
         self.chat_display.see("end")
         self.chat_display.configure(state="disabled")
