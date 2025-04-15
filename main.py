@@ -301,24 +301,11 @@ class OllamaChatApp:
         if self.chat_display.get("1.0", "end").strip():
             self.chat_display.insert("end", "\n\n")
         
-        # Get appropriate background color based on theme
-        if ctk.get_appearance_mode() == "Dark":
-            bg_color = self.colors["user_msg_bg_dark"]
-        else:
-            bg_color = self.colors["user_msg_bg"]
+        # Use bold font for user label
+        self.chat_display.insert("end", "You: ", font=ctk.CTkFont(size=12, weight="bold"))
         
-        # Add user icon/label
-        self.chat_display.insert("end", "You: ", "user_tag")
-        self.chat_display.tag_configure("user_tag", font=ctk.CTkFont(size=12, weight="bold"))
-        
-        # Add the message with background
-        message_start = self.chat_display.index("end-1c")
+        # Add the message
         self.chat_display.insert("end", message)
-        message_end = self.chat_display.index("end-1c")
-        
-        # Configure tags
-        self.chat_display.tag_add("user_msg", message_start, message_end)
-        self.chat_display.tag_configure("user_msg", background=bg_color, lmargin1=20, lmargin2=20, rmargin=20)
         
         self.chat_display.see("end")
         self.chat_display.configure(state="disabled")
@@ -328,12 +315,8 @@ class OllamaChatApp:
         self.chat_display.configure(state="normal")
         self.chat_display.insert("end", "\n\n")
         
-        # Add AI icon/label
-        self.chat_display.insert("end", "AI: ", "ai_tag")
-        self.chat_display.tag_configure("ai_tag", font=ctk.CTkFont(size=12, weight="bold"))
-        
-        # Save the starting position for the AI message
-        self.ai_message_start = self.chat_display.index("end-1c")
+        # Add AI icon/label with bold font
+        self.chat_display.insert("end", "AI: ", font=ctk.CTkFont(size=12, weight="bold"))
         
         self.chat_display.see("end")
         self.chat_display.configure(state="disabled")
@@ -344,19 +327,6 @@ class OllamaChatApp:
         
         # Add the new text
         self.chat_display.insert("end", text)
-        
-        # Apply styling to the entire AI message
-        message_end = self.chat_display.index("end-1c")
-        
-        # Get appropriate background color based on theme
-        if ctk.get_appearance_mode() == "Dark":
-            bg_color = self.colors["ai_msg_bg_dark"]
-        else:
-            bg_color = self.colors["ai_msg_bg"]
-        
-        # Configure tags
-        self.chat_display.tag_add("ai_msg", self.ai_message_start, message_end)
-        self.chat_display.tag_configure("ai_msg", background=bg_color, lmargin1=20, lmargin2=20, rmargin=20)
         
         self.chat_display.see("end")
         self.chat_display.configure(state="disabled")
