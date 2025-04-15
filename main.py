@@ -274,9 +274,11 @@ class OllamaChatApp:
         model = self.selected_model.get() or "deepseek-r1:1.5b"
         system = self.get_system_prompt()
         
+        # First clear the input field to prevent double-sending
+        self.user_input.delete("0.0", "end")
+        
         # Display user message with styling
         self.display_user_message(user_message)
-        self.user_input.delete("0.0", "end")
         
         # Start a new message for the AI response
         self.start_ai_response()
@@ -284,6 +286,9 @@ class OllamaChatApp:
         # Update status and disable input while processing
         self.set_status("Thinking...", "orange")
         self.is_processing = True
+        
+        # Log to console for debugging
+        print(f"Sending message: '{user_message}' to model: {model}")
         
         # Use a thread to send the request
         threading.Thread(target=self.process_message, args=(user_message, model, system)).start()
