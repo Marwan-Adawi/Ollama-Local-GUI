@@ -48,7 +48,7 @@ pip install -r requirements.txt
 1. Make sure Ollama is running in the background
 2. Run the Python script:
 ```bash
-python ollama_chat_app.py
+python main.py
 ```
 
 ## Creating an Executable
@@ -57,7 +57,7 @@ To create a standalone executable:
 
 ```bash
 pip install pyinstaller
-pyinstaller --onefile --windowed ollama_chat_app.py
+pyinstaller --onefile --windowed main.py
 ```
 
 The executable will be located in the `dist` folder.
