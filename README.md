@@ -97,10 +97,19 @@ To use a different model:
 ## File Structure
 
 ```
-ollama-chat/
-├── ollama_chat_app.py       # Main application code
-├── requirements.txt         # Python dependencies
-└── README.md               # This file
+OLLAMA-LOCAL-GUI/
+├── attached_assets/
+│   ├── ollama_chat_app.py
+├── screenshots/           # Contains application screenshots
+├── generated-icon.png     # Application icon
+├── LICENSE                # MIT License file
+├── main.py                # Main application code
+├── ollama-chat-gui.py     # Alternative GUI implementation
+├── pyproject.toml         # Project metadata and dependencies
+├── README.md              # This file
+├── replit.nix             # Replit configuration
+├── requirements.txt       # Python dependencies
+└── .vlock                 # Version lock file
 ```
 
 ## Requirements.txt
