@@ -1,6 +1,8 @@
 # Ollama Chat Application
 
-A customizable chat interface for interacting with Ollama models using Python and Tkinter.
+A customizable chat interface for interacting with Ollama models using Python and CustomTkinter.
+
+![Application Screenshot](screenshots/app_screenshot.png)
 
 ## Overview
 
@@ -72,16 +74,19 @@ The executable will be located in the `dist` folder.
 
 ### Changing the System Prompt
 
-The system prompt determines how the AI responds. To modify it:
-1. Click on the "Settings" button
-2. Edit the text in the system prompt field
-3. Click "Save"
+The system prompt determines how the AI responds. You can:
+1. Choose from predefined presets (Casual Chat, Coding Assistant, Creative Writing, Academic Helper)
+2. Select "Custom" and enter your own system prompt
+
+![System Prompt Settings](screenshots/system_prompt.png)
 
 ### Switching Models
 
 To use a different model:
 1. Ensure you have downloaded the model using Ollama
 2. Select it from the model dropdown menu in the application
+
+![Model Selection](screenshots/model_selection.png)
 
 ## Troubleshooting
 
@@ -111,6 +116,10 @@ requests
 - The application runs locally and doesn't send data to external servers (beyond what Ollama itself may do)
 - Performance depends on your hardware and the model size
 - Make sure to start Ollama before launching the application
+
+## Light Mode
+
+![Chat Example](screenshots/light-mode.png)
 
 ## License
 
